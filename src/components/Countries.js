@@ -1,18 +1,20 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Card from "./Card";
 
 const Countries = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [rangeValue, setRangeValue] = useState(36);
-  const [selectedRadio, setSelectedValue] = useState("");
+  const [selectedRadio, setSelectedRadio] = useState("");
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
-  // le useEffect ce joue au moment ou le composant est monté
+
+  // Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
-    axios.get("https://restcountries.com/v3.1/all").then((res) => {
-      setData(res.data);
-    });
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((res) => setData(res.data));
   }, []);
+
   return (
     <div className="countries">
       <ul className="radio-container">
@@ -30,14 +32,14 @@ const Countries = () => {
               id={continent}
               name="continentRadio"
               checked={continent === selectedRadio}
-              onChange={(e) => setSelectedValue(e.target.id)}
+              onChange={(e) => setSelectedRadio(e.target.id)}
             />
             <label htmlFor={continent}>{continent}</label>
           </li>
         ))}
       </ul>
       {selectedRadio && (
-        <button onClick={() => setSelectedValue("")}>
+        <button onClick={() => setSelectedRadio("")}>
           Annuler la recherche
         </button>
       )}
