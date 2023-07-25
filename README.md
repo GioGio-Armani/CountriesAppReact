@@ -5,6 +5,20 @@ Enfin un blog afin de poster des articles stocker dans une base de données noSQ
 
 ![Screenshot](./src/assets/img/screen.png)
 
+## Installation
+
+Pour installer le projet, il faut cloner le projet et installer les dépendances.
+Puis lancer le serveur JSON Server et le serveur React.
+
+Utiliser les commandes suivantes dans le terminal:
+
+```bash
+git clone https://github.com/GioGio-Armani/CountriesAppReact
+npm install
+npm run server
+npm start
+```
+
 ## Technologies utilisées
 
 - React
